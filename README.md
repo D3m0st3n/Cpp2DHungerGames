@@ -75,7 +75,7 @@ The result should be two executable file ready to be launched in the terminal.
 ##### Windows
 
 
-### *Note :* Simulation not properly working on Windows OS, issues with RNG 
+##### *Note :* Simulation not properly working on Windows OS, issues with RNG 
 
 Following commands only work if you have MinGW, CMake and external libraries set uo.
 
