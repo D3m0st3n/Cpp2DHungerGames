@@ -4,9 +4,16 @@
 
 Step-by-step set up for my project
 
+
 ### Mac OS
 
 ***
+
+Requirements :
+    -
+    -
+    -
+    -
 
 1. Setup VS Code
     - Download & install the software
@@ -41,6 +48,38 @@ The project will be built and compiled.
 
 ***
 
-TBD
+
+Requirements :
+    - MinGW
+    - CMake
+    - gcc/g++
+    - SDL library
+
+1. Install VS Code to edit the code
+
+2. MinGW & C++ compilers
+    - Download & install the latest MinGW version
+    - Add g++/gcc paths to PATH global environment variables
+
+    External libraries : SDL
+    - Download SDL library for MinGW
+    - Extract content of the zip file anywhere
+    - Copy content of *i686-w64-mingw32* to the MinGW directory
+    Your external library should be set up
+
+3. Cmake installation
+    - Simply install the latest CMake version
+    - Make sure to add the cmake path to PATH environment variables
+
+4. Build the project
+    - In the repo directory : 
+    
+    > $ mkdir build && cd build 
+    >
+    > $ cmake -DCMAKE_C_COMPILER="/path/to/gcc.exe" -DCMAKE_CXX_COMPILER="/path/to/g++.exe" -G "MinGW Makefiles" ..
+    >
+    > $ cmake --build .
+
+*Note : compile cmake command  for me, $ cmake -DCMAKE_C_COMPILER="C:/MinGW/bin/gcc.exe" -DCMAKE_CXX_COMPILER="C:/MinGW/bin/g++.exe" -G "MinGW Makefiles" ..*
 
 

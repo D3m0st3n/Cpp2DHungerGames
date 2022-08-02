@@ -1,19 +1,19 @@
-# Cpp3DHungerGames
+# Cpp2DHungerGames
 
-Here is a first working version of a lab immersion project in Jaksic Laboratory at EPFL done during 02/22 to 07/22. It aims at reproducing and simulating an in vitro evolutionary biology expirement to identify genetic factors of cognition in *Drosophila Melanogaster*. Its purpose is to identify possible parameters values to run the in vitro experiment and explore models to explain drosophila's behaviour.
+Here is a first working version of a lab immersion project in Jaksic Laboratory at EPFL done during 02/22 to 07/22. It aims at reproducing and simulating an in vitro evolutionary biology expirement to identify genetic factors of cognition in *Drosophila Melanogaster*. Its purpose is to identify possible parameters values to run the in vitro experiment and explore models to explain drosophila's behaviour. It is a 2D simulation that have the same aim as the 3D one. It was implemented before the 3D simulation as it contains all important interactions and behaviour of the agents. It enables quick modifcations and easy reading when working with the visualization.
 
 ### 1. Summary
 
 #### Abstract
 
-This project consists of a simulated 3D cilyndrical arena divided in multiple sections to form different rooms. Each room is connected to the next one by multiple one-way entrances in the wall separating them. It simulates agents within the arena. The agents are currently characterized with having random trajectories and can be attracted to a food object if in the same room. The food object is a simple point of attraction located at the center of a room, shifting from room to room. The "null" model implemented so far is a force based model with random attractor points drawn from a uniform distribution.
+This project consists of a simulated 2D circular arena divided in multiple sections to form different rooms. Each room is connected to the next one by multiple one-way entrances in the wall separating them. It simulates agents within the arena. The agents are currently characterized with having random trajectories and can be attracted to a food object if in the same room. The food object is a simple point of attraction located at the center of a room, shifting from room to room. The "null" model implemented so far is a force based model with random attractor points drawn from a uniform distribution.
 
 #### Project executables
 
 The project generates two executable files :
 
-- *Sim3D*, the main part of the project. Can run multiple simulation and record data for analysis. Generates two directories : *SimConfig* & *SimData* that keep track of simulation configuration and simulation data respectively. 
-- *DrawArena3D* 2D graphical representation of the simulation, does not save any data. Used to check correct behaviour of simulation and visualize it. (Limited scope as it is a 2D representation for a 3D simulation)
+- *Sim2D*, the main part of the project. Can run multiple simulation and record data for analysis. Generates two directories : *SimConfig* & *SimData* that keep track of simulation configuration and simulation data respectively. 
+- *DrawArena2D* 2D graphical representation of the simulation, does not save any data. Used to check correct behaviour of simulation and visualize it. (Limited scope as it is a 2D representation for a 2D simulation)
 
 ### 2. Requierements
 
@@ -33,7 +33,7 @@ I am using Visual Studio Code a scoding environment, so some steps and configura
 
 ##### Windows 
 
-**TBD**
+Check SETUP.md
 
 ##### Linux?
 
@@ -70,11 +70,19 @@ After downloading the project and installing all the requirements, run these com
 
 The result should be two executable file ready to be launched in the terminal. 
 
-*Note* : *Sim3D* can take arguments to configure the simulation, it is not the case for *DrawArena3D*.
+*Note* : *Sim2D* can take arguments to configure the simulation, it is not the case for *DrawArena3D*.
 
 ##### Windows
 
-**TBD**
+Following commands only work if you have MinGW, CMake and external libraries set uo.
+
+In the project directory :
+
+> $ mkdir build && cd build 
+>
+> $ cmake -DCMAKE_C_COMPILER="/path/to/gcc.exe" -DCMAKE_CXX_COMPILER="/path/to/g++.exe" -G "MinGW Makefiles" ..
+>
+> $ cmake --build .
 
 ##### Linux? 
 
@@ -86,14 +94,14 @@ The result should be two executable file ready to be launched in the terminal.
 
 List of classes and small description of there use/utility :
 
-- **Vector3D** : Base utility class, defines 3D vectors and basic operations for the project.
-- **Cuboid** : Defines a 3D cuboid shape built with 8 points. Base element to construct walls & entrances. Include many utility functions as well.
+- **Vector2D** : Base utility class, defines 2D vectors and basic operations for the project.
+- **Rectangle** : Defines a 2D polygon with 4 points. Base element to construct walls & entrances. Include many utility functions as well.
 - **Wall** : Simulation object that divides the arena in multiple rooms.
 - **Entrance** : Simulation object that is part of a wall and enables agents to cross walls.
-- **Arena3D**  : Forms cylindrical arena built from walls, in which simulation takes place.
-- **Fly3D** : Agent of the simulation, moves within the arena, going from room to room.
+- **Arena2D**  : Forms circular arena built from walls, in which simulation takes place.
+- **Fly2D** : Agent of the simulation, moves within the arena, going from room to room.
 - **Food** : Attractor object for the agents, shift from room to room.
-- **Simulation3D** : Regroup every element of the simulate and runs it.
+- **Simulation2D** : Regroup every element of the simulate and runs it.
 
 - **Utility_SDL** : Utility functions for graphic elements
 
@@ -101,9 +109,8 @@ List of classes and small description of there use/utility :
 
 ##### Other
 
-- **main.cpp** : Defines Sim3D executable
-- **DrawArena3D.cpp** : Defines DrawArena3D executable
-- **Test.cpp** : Defines executable that checks normal behaviour for Vector3D & Cuboid mainly
+- **main.cpp** : Defines Sim2D executable
+- **DrawArena2D.cpp** : Defines DrawArena2D executable
 
 #### 4.2 Interactions
 
