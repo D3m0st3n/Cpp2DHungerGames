@@ -28,6 +28,7 @@ int main (int argc, char** argv) {
     double wall_width = 10.0;
     bool nfood = 0;
     bool dataR = 1;
+    bool v = 0;
 
     for (int i = 0; i < argc; ++i){
         // Help command
@@ -136,13 +137,13 @@ int main (int argc, char** argv) {
                 Food food(&arena, f_room, 100.0);
                 arena.SetFood(&food);
             }
-            Simulation2D Sim2D( &arena, nb_flies, s_room, maxtime, dt, dataR);
+            Simulation2D Sim2D( &arena, nb_flies, s_room, maxtime, dt, dataR, v);
             
             auto start = high_resolution_clock::now();
             
             std::cout<<" ----Simulation "<<i<<" start---- \n";
             // Line to limit system clear command in Simualtion3D::Verbose()
-            std::cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+            if(v) std::cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
             for(int i = 0; i < maxtime / dt; i++){
 
                 Sim2D.Update(dt);

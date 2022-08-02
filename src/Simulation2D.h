@@ -26,7 +26,7 @@ class Simulation2D {
          * @param dt timestep
          * @param datarec indicates if simulation records data
          */
-        Simulation2D(const Vector2d<double>& c, const double& r, int nb_walls = 0, const int& nb_ent = 2, const int& nb_flies = 0, const int& starting_room = 0, const double& maxtime = 1000.0, const double& dt = 0.1, const bool& datarec = 0);
+        Simulation2D(const Vector2d<double>& c, const double& r, int nb_walls = 0, const int& nb_ent = 2, const int& nb_flies = 0, const int& starting_room = 0, const double& maxtime = 1000.0, const double& dt = 0.1, const bool& datarec = 0, const bool& v = false);
 
         /**
          * @brief Construct a new Simulation2D object
@@ -42,7 +42,7 @@ class Simulation2D {
          * @param dt timestep
          * @param datarec indicates if simulation records data
          */
-        Simulation2D(const double& c1, const double& c2, const double& r, int nb_walls = 0, const int& nb_ent = 2, const int& nb_flies = 0, const int& starting_room = 0, const double& maxtime = 1000.0, const double& dt = 0.1, const bool& datarec = 0);
+        Simulation2D(const double& c1, const double& c2, const double& r, int nb_walls = 0, const int& nb_ent = 2, const int& nb_flies = 0, const int& starting_room = 0, const double& maxtime = 1000.0, const double& dt = 0.1, const bool& datarec = 0, const bool& v = false);
 
         /**
          * @brief Construct a new Simulation2D object
@@ -54,7 +54,7 @@ class Simulation2D {
          * @param dt timestep
          * @param datarec indicates if simulation records data
          */
-        Simulation2D(Arena2D* arena, const int& nb_flies = 0, const int& starting_room = 0, const double& maxtime = 1000.0, const double& dt = 0.1, const bool& datarec = 0);
+        Simulation2D(Arena2D* arena, const int& nb_flies = 0, const int& starting_room = 0, const double& maxtime = 1000.0, const double& dt = 0.1, const bool& datarec = 0, const bool& v = false);
 
         //Destructor
         /**
@@ -138,6 +138,7 @@ class Simulation2D {
         bool dataRec;
         std::ofstream Simfile;
         std::ofstream Configfile;
+        bool VERBOSE;
 
         /**
          * @brief print advancement of simulation

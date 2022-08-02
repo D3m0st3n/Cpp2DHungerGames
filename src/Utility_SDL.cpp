@@ -47,14 +47,14 @@ void SDL_Utility::DrawCircle(SDL_Renderer* renderer, int32_t centreX, int32_t ce
    }
 }
 
-void SDL_Utility::DrawCircleF(SDL_Renderer* renderer, float32_t centreX, float32_t centreY, float32_t radius){
-   const float32_t diameter = (radius * 2);
+void SDL_Utility::DrawCircleF(SDL_Renderer* renderer, float centreX, float centreY, float radius){
+   const float diameter = (radius * 2);
 
-   float32_t x = (radius - 1);
-   float32_t y = 0;
-   float32_t tx = 1;
-   float32_t ty = 1;
-   float32_t error = (tx - diameter);
+   float x = (radius - 1);
+   float y = 0;
+   float tx = 1;
+   float ty = 1;
+   float error = (tx - diameter);
 
    while (x >= y)
    {
@@ -90,7 +90,7 @@ void SDL_Utility::DrawRing(SDL_Renderer* renderer, int32_t centreX, int32_t cent
    }
 }
 
-void SDL_Utility::DrawRingF(SDL_Renderer* renderer, float32_t centreX, float32_t centreY, float32_t radius, float32_t width){
+void SDL_Utility::DrawRingF(SDL_Renderer* renderer, float centreX, float centreY, float radius, float width){
    // Add step parameter for drawing?
    for(float i = radius; i <= radius + width; i += 0.1){
       SDL_Utility::DrawCircleF(renderer, centreX, centreY, i);

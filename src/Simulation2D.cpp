@@ -8,7 +8,8 @@
 #include <cmath>
 #include <string.h>
 
-Simulation2D::Simulation2D(const Vector2d<double>& c, const double& r, int nb_walls, const int& nb_ent, const int& nb_flies, const int& starting_room, const double& maxtime, const double& dt, const bool& datarec) : maxtime(maxtime), time(0.0), dt(dt), dataRec(datarec){
+Simulation2D::Simulation2D(const Vector2d<double>& c, const double& r, int nb_walls, const int& nb_ent, const int& nb_flies, const int& starting_room, const double& maxtime, const double& dt, const bool& datarec, const bool& v)
+    : maxtime(maxtime), time(0.0), dt(dt), dataRec(datarec), VERBOSE(v){
 
     this->arena = new Arena2D(c, r, nb_walls, nb_ent);
     for(int i = 0; i<nb_flies; i++){
@@ -19,7 +20,8 @@ Simulation2D::Simulation2D(const Vector2d<double>& c, const double& r, int nb_wa
 
 }
 
-Simulation2D::Simulation2D(const double& c1, const double& c2, const double& r, int nb_walls, const int& nb_ent, const int& nb_flies, const int& starting_room, const double& maxtime, const double& dt, const bool& datarec) : maxtime(maxtime), time(0.0), dt(dt), dataRec(datarec){
+Simulation2D::Simulation2D(const double& c1, const double& c2, const double& r, int nb_walls, const int& nb_ent, const int& nb_flies, const int& starting_room, const double& maxtime, const double& dt, const bool& datarec, const bool& v)
+    : maxtime(maxtime), time(0.0), dt(dt), dataRec(datarec), VERBOSE(v){
 
     this->arena = new Arena2D(c1, c2, r, nb_walls, nb_ent);
     for(int i = 0; i<nb_flies; i++){
@@ -31,7 +33,8 @@ Simulation2D::Simulation2D(const double& c1, const double& c2, const double& r, 
     
 }
 
-Simulation2D::Simulation2D(Arena2D* arena, const int& nb_flies, const int& starting_room, const double& maxtime, const double& dt, const bool& datarec) : maxtime(maxtime), time(0.0), dt(dt), dataRec(datarec){
+Simulation2D::Simulation2D(Arena2D* arena, const int& nb_flies, const int& starting_room, const double& maxtime, const double& dt, const bool& datarec, const bool& v)
+     : maxtime(maxtime), time(0.0), dt(dt), dataRec(datarec), VERBOSE(v){
     this->arena = arena;
     for(int i = 0; i<nb_flies; i++){
         this->flies.push_back(new Fly2D(starting_room, i, this->arena));
@@ -83,7 +86,7 @@ void Simulation2D::Update(double dt){
             Simfile<<"\n";
         }
 
-        Verbose();
+        if(VERBOSE) Verbose();
 
         time += dt;
     }
@@ -92,7 +95,8 @@ void Simulation2D::Update(double dt){
 }
 
 void Simulation2D::Verbose(){
-    system("clear");
+    // TODO : Rework verbose function for all OS
+    /* system("clear");
 
     std::cout<<"%";
     for(int i = 0; i < 10; i++){
@@ -105,7 +109,7 @@ void Simulation2D::Verbose(){
     }
     std::cout<<"%   "<<ceil(time / maxtime * 100.0)<<" %";
 
-    std::cout<<"\n\n";
+    std::cout<<"\n\n"; */
 }
 
 

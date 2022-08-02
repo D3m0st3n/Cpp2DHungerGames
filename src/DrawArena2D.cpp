@@ -1,7 +1,11 @@
 // C++ Standard Libraries
 #include <iostream>
 // Third party
-#include <SDL.h>
+#if defined(WIN32) || defined(_WIN32)
+    #include <SDL2/SDL.h>
+#elif __APPLE__
+    #include <SDL.h>
+#endif
 // Project files
 #include "Utility_SDL.h"
 #include "Wall.h"
@@ -17,7 +21,6 @@ int main(int argc, char* argv[]){
 
     // Grab the window surface.
     SDL_Surface* screen;
-
 
     // Initialize the video subsystem.
     // If it returns less than 1, then an

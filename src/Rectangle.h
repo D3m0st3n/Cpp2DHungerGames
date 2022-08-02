@@ -1,6 +1,8 @@
 #ifndef RECTANGLE_H 
 #define RECTANGLE_H
 
+#include <vector>
+
 #include "Vector2D.h"
 
 class Rectangle{
